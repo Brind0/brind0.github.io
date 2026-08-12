@@ -1,0 +1,242 @@
+/* Charlie Brind — portfolio one-pager
+   Editorial / statute-citation aesthetic: paper, ink, a single warm accent.
+   Two type families only (serif for reading, mono for reference marks).
+   No framework, no external fonts, no build step. */
+
+:root {
+  --paper:        #f7f4ee;
+  --ink:          #1c1a15;
+  --ink-soft:     #4a453c;
+  --ink-mute:     #756e5f;
+  --rule:         rgba(28, 26, 21, 0.14);
+  --rule-strong:  rgba(28, 26, 21, 0.30);
+  --accent:       #9a3e1f;
+  --receipt-bg:   rgba(154, 62, 31, 0.07);
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", ui-serif, Georgia, serif;
+  --mono:  ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+
+  /* type scale — four sizes, deliberately spaced */
+  --fs-meta:  0.8125rem;  /* 13px — every mono label, one size, used everywhere */
+  --fs-body:  1.0625rem;  /* 17px — prose */
+  --fs-head:  1.75rem;    /* 28px — project titles and the pull quote */
+  --fs-h1:    clamp(2.25rem, 6vw, 3.25rem);
+
+  --measure: 40rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:        #15130f;
+    --ink:          #ece6d9;
+    --ink-soft:     #beb6a4;
+    --ink-mute:     #9c9482;
+    --rule:         rgba(236, 230, 217, 0.12);
+    --rule-strong:  rgba(236, 230, 217, 0.26);
+    --accent:       #d98a52;
+    --receipt-bg:   rgba(217, 138, 82, 0.08);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { color-scheme: light dark; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: var(--fs-body);
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+.wrap {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 5rem;
+}
+
+/* ---------- letterhead ---------- */
+
+.letterhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--mono);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+/* ---------- header ---------- */
+
+header.hero { margin-bottom: 4rem; }
+
+h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: var(--fs-h1);
+  line-height: 1.12;
+  margin: 0 0 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.lede {
+  font-size: var(--fs-body);
+  color: var(--ink-soft);
+  max-width: var(--measure);
+  margin: 0;
+}
+.lede strong { color: var(--ink); font-weight: 600; }
+
+/* ---------- section rule ---------- */
+
+.section-mark {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  margin: 0 0 1.8rem;
+}
+.section-mark .num {
+  font-family: var(--mono);
+  font-size: var(--fs-meta);
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+.section-mark .line {
+  flex: 1;
+  align-self: center;
+  height: 1px;
+  background: var(--rule);
+}
+h2.label {
+  font-family: var(--mono);
+  font-size: var(--fs-meta);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 0;
+}
+
+section { margin-bottom: 3.75rem; }
+
+/* ---------- projects ---------- */
+
+.project {
+  padding: 1.9rem 0;
+  border-top: 1px solid var(--rule);
+}
+.project:last-child { padding-bottom: 0; }
+
+.project-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.cite {
+  font-family: var(--mono);
+  font-size: var(--fs-meta);
+  color: var(--ink-mute);
+  white-space: nowrap;
+}
+
+.project h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: var(--fs-head);
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+
+.project .what {
+  color: var(--ink-soft);
+  margin: 0.3rem 0 0.95rem;
+  max-width: var(--measure);
+}
+
+.receipt {
+  background: var(--receipt-bg);
+  border-left: 2px solid var(--accent);
+  padding: 0.65rem 0.95rem;
+  margin: 0 0 0.95rem;
+  font-size: var(--fs-body);
+  color: var(--ink);
+}
+.receipt .tag {
+  font-family: var(--mono);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.project .link {
+  font-family: var(--mono);
+  font-size: var(--fs-meta);
+}
+.project .link a { color: var(--ink-soft); }
+.project .link a:hover { color: var(--accent); }
+.project .link .soon { color: var(--ink-mute); }
+
+/* ---------- how I work ---------- */
+
+.principle {
+  border-left: 2px solid var(--rule-strong);
+  padding-left: 1.3rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--fs-head);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: var(--measure);
+}
+.principle strong {
+  font-style: normal;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ---------- contact / footer ---------- */
+
+footer {
+  border-top: 1px solid var(--rule);
+  padding-top: 1.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.6rem;
+  font-family: var(--mono);
+  font-size: var(--fs-meta);
+}
+footer a { color: var(--ink-soft); }
+footer a:hover { color: var(--accent); }
+footer .status {
+  width: 100%;
+  color: var(--ink-mute);
+  margin-top: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .wrap { padding: 2.5rem 1.25rem 4rem; }
+  .project-head { flex-direction: column; gap: 0.15rem; }
+  .letterhead { flex-direction: column; align-items: flex-start; gap: 0.2rem; }
+}

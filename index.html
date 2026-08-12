@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charlie Brind — AI systems, built for regulated environments</title>
+<meta name="description" content="Law student building AI systems that hold up under audit. Cardiff LLB, shipping working artefacts: a citation linter, a grounded retrieval agent, a 47-table agentic OS.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='Georgia,serif' fill='%239a3e1f'%3E%C2%A7%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="letterhead">
+    <span>Charlie Brind</span>
+    <span>Cardiff, UK</span>
+  </div>
+
+  <header class="hero">
+    <h1>Law student.<br>AI engineer by evidence.</h1>
+    <p class="lede">
+      I build AI systems for regulated and small-business environments where
+      the audit trail matters as much as the output. <strong>Reading law at
+      Cardiff (started 2024, graduating 2027)</strong> and shipping working
+      systems alongside it: not case studies of intent, artefacts that run.
+    </p>
+  </header>
+
+  <section aria-labelledby="work-label">
+    <div class="section-mark">
+      <span class="num">&sect; 01</span>
+      <span class="line"></span>
+      <h2 class="label" id="work-label">Artefacts</h2>
+    </div>
+
+    <article class="project">
+      <div class="project-head">
+        <span class="cite">oscola&#8288;-cite</span>
+        <h3>An OSCOLA citation linter</h3>
+      </div>
+      <p class="what">
+        Checks legal citation <em>form</em> against OSCOLA in an existing
+        draft: fifteen rules across cases, legislation, books and journal
+        articles. Standard-library only, no dependencies.
+      </p>
+      <p class="receipt">
+        <span class="tag">The receipt</span>
+        On its first live run against real seminar notes it caught a genuine
+        defect, a case cited with no report and no court
+        (<em>McPhail v Doulton</em> [1971]), the kind of error every existing
+        OSCOLA tool generates citations rather than checks for.
+      </p>
+      <p class="link"><a href="#" data-repo="oscola-cite">github.com/Brind0/oscola-cite</a> <span class="soon">(repository link to follow)</span></p>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <span class="cite">sg&#8288;-statutes&#8288;-agent</span>
+        <h3>Grounded retrieval over Singapore statutes</h3>
+      </div>
+      <p class="what">
+        Answers questions about Singapore legislation with pinpoint citations
+        (Act, section, official deep link) and refuses to answer when it
+        isn't grounded, rather than guessing. FTS5 and keyword ranking, no
+        embeddings, no vector database.
+      </p>
+      <p class="receipt">
+        <span class="tag">The receipt</span>
+        Published eval, failures included: <strong>72% recall@1</strong>
+        against a hand-built question set, and <strong>83% refusal
+        precision</strong> where a plain keyword baseline scored 33%.
+        Compliance with the source's terms of use (fetch windows, honest
+        user agent, attribution) was designed in from the first commit, not
+        bolted on after.
+      </p>
+      <p class="link"><a href="#" data-repo="sg-statutes-agent">github.com/Brind0/sg-statutes-agent</a> <span class="soon">(repository link to follow)</span></p>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <span class="cite">life&#8288;-hub</span>
+        <h3>A personal agentic operating system</h3>
+      </div>
+      <p class="what">
+        The system that actually runs my life: study, finances, health,
+        career, all agent-managed. SQLite underneath, strict per-agent write
+        ownership so no two agents touch the same table, and a hard rule
+        that AI never moves money: it proposes, I execute.
+      </p>
+      <p class="receipt">
+        <span class="tag">The receipt</span>
+        47+ tables, 23 registered job types, roughly 30 million tokens of
+        agent runs to date. Every write is deterministic and attributable;
+        nothing autonomous touches a financial account.
+      </p>
+      <p class="link"><a href="#" data-repo="life-hub">github.com/Brind0</a> <span class="soon">(public write-up to follow)</span></p>
+    </article>
+  </section>
+
+  <section aria-labelledby="method-label">
+    <div class="section-mark">
+      <span class="num">&sect; 02</span>
+      <span class="line"></span>
+      <h2 class="label" id="method-label">How I work</h2>
+    </div>
+    <p class="principle">
+      <strong>Local-first, evals before claims.</strong> I design for
+      auditability and data protection from the first commit, not as a
+      retrofit, and I don't publish a number I haven't measured, including
+      the ones that make the work look worse.
+    </p>
+  </section>
+
+  <footer>
+    <a href="#" data-field="linkedin">linkedin.com/in/&#8288;[to&#8288;-fill]</a>
+    <a href="https://github.com/Brind0">github.com/Brind0</a>
+    <a href="mailto:[to-fill@example.com]">[email, to fill]</a>
+    <span class="status">Draft, built 12/08/2026, not yet published.</span>
+  </footer>
+
+</div>
+</body>
+</html>
