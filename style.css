@@ -1,34 +1,41 @@
 /* Charlie Brind — portfolio one-pager
-   Editorial / statute-citation aesthetic: paper, ink, a single warm accent
-   (also used for every link — one accent colour only).
-   Two type families only (serif for reading, mono for reference marks),
-   both system stacks — no Google Fonts, no external requests.
-   No framework, no build step, no animation. */
+   Concept: the audit trail. An auditor marks a verified figure with a
+   green tick in the margin — that mark is the whole visual system here.
+   Paper close to true white (contrast first — legibility was the brief),
+   ink close to true black, one verifying green as the only colour.
+   Fraunces (display) + Newsreader (reading) + IBM Plex Mono (citations,
+   labels, everything that reads as a reference mark). Two Google Fonts
+   requests, no framework, no build step. */
 
 :root {
-  --paper:        #ffffff;
-  --ink:          #1a1a1a;
-  --ink-soft:     #4a453c;
-  --ink-mute:     #756e5f;
-  --rule:         rgba(28, 26, 21, 0.14);
-  --rule-strong:  rgba(28, 26, 21, 0.30);
-  --accent:       #9a3e1f;
-  --receipt-bg:   rgba(154, 62, 31, 0.07);
+  --paper:        #fcfbf8;
+  --paper-raised: #ffffff;
+  --ink:          #16140f;
+  --ink-soft:     #3c3729;
+  --ink-mute:     #726a5a;
+  --rule:         rgba(22, 20, 15, 0.13);
+  --rule-strong:  rgba(22, 20, 15, 0.34);
 
-  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", ui-serif, Georgia, serif;
-  --mono:  ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+  --accent:       #2f5233;  /* verifying ink */
+  --accent-bright:#4b7a46;  /* tick / status-ok */
+  --accent-soft:  rgba(47, 82, 51, 0.07);
+  --wip:          #9c6b23;
+  --off:          #918a79;
 
-  /* type scale — four sizes, deliberately spaced */
-  --fs-meta:  0.8125rem;  /* 13px — every mono label, one size, used everywhere */
-  --fs-body:  1.0625rem;  /* 17px — prose */
-  --fs-head:  1.75rem;    /* 28px — project titles and the pull quote */
-  --fs-h1:    clamp(2.25rem, 6vw, 3.25rem);
+  --display: "Fraunces", ui-serif, Georgia, serif;
+  --serif:   "Newsreader", "Iowan Old Style", ui-serif, Georgia, serif;
+  --mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Consolas, monospace;
 
-  --measure: 34rem; /* ~65-character line at the body size */
+  --fs-meta:  0.8125rem;  /* 13px — mono labels */
+  --fs-body:  1.125rem;   /* 18px — prose, up from 17 for legibility */
+  --fs-head:  1.8rem;     /* project titles */
+  --fs-h1:    clamp(2.5rem, 6.4vw, 3.6rem);
+
+  --measure: 37rem;
 }
 
 /* White background, dark text, always (Charlie's ruling 03/09/2026):
-   no dark-mode block. A separate design pass follows this fix. */
+   no dark-mode block. */
 
 * { box-sizing: border-box; }
 
@@ -36,21 +43,40 @@ html { color-scheme: light only; }
 
 body {
   margin: 0;
-  background: #ffffff;
-  color: #1a1a1a;
+  background: var(--paper);
+  /* ledger rule: a near-invisible horizontal grain, felt more than seen */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(47, 82, 51, 0.025) 0,
+    rgba(47, 82, 51, 0.025) 1px,
+    transparent 1px,
+    transparent 28px
+  );
+  color: var(--ink);
   font-family: var(--serif);
   font-size: var(--fs-body);
-  line-height: 1.62;
+  line-height: 1.68;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-a {
-  color: var(--accent);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { text-decoration-thickness: 2px; }
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.is-visible { opacity: 1; transform: none; }
+}
 
 .wrap {
   max-width: 46rem;
@@ -76,16 +102,16 @@ a:hover { text-decoration-thickness: 2px; }
 
 /* ---------- header ---------- */
 
-header.hero { margin-bottom: 4rem; }
+header.hero { margin-bottom: 4.25rem; }
 
 h1 {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-weight: 500;
   font-size: var(--fs-h1);
-  line-height: 1.12;
-  margin: 0 0 1.5rem;
-  letter-spacing: -0.01em;
-  color: #1a1a1a;
+  line-height: 1.1;
+  margin: 0 0 1.6rem;
+  letter-spacing: -0.015em;
+  color: var(--ink);
 }
 
 .lede {
@@ -102,7 +128,7 @@ h1 {
   display: flex;
   align-items: baseline;
   gap: 0.9rem;
-  margin: 0 0 1.8rem;
+  margin: 0 0 1.9rem;
 }
 .section-mark .num {
   font-family: var(--mono);
@@ -119,29 +145,31 @@ h1 {
 h2.label {
   font-family: var(--mono);
   font-size: var(--fs-meta);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-mute);
   margin: 0;
 }
 
-section { margin-bottom: 3.75rem; }
+section { margin-bottom: 3.9rem; }
 
 /* ---------- projects ---------- */
 
 .project {
-  padding: 1.9rem 0;
+  padding: 2rem 0;
   border-top: 1px solid var(--rule);
+  transition: border-color 0.25s ease;
 }
 .project:last-child { padding-bottom: 0; }
+.project:hover { border-top-color: var(--rule-strong); }
 
 .project-head {
   display: flex;
   align-items: baseline;
   gap: 0.75rem;
   flex-wrap: wrap;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .cite {
@@ -152,43 +180,70 @@ section { margin-bottom: 3.75rem; }
 }
 
 .project h3 {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-weight: 500;
   font-size: var(--fs-head);
   margin: 0;
   letter-spacing: -0.005em;
-  color: #1a1a1a;
+  color: var(--ink);
 }
 
 .project .what {
   color: var(--ink-soft);
-  margin: 0.3rem 0 0.95rem;
+  margin: 0.35rem 0 1.05rem;
   max-width: var(--measure);
 }
 
-.receipt {
-  background: var(--receipt-bg);
-  border-left: 2px solid var(--accent);
-  padding: 0.65rem 0.95rem;
-  margin: 0 0 0.95rem;
-  font-size: var(--fs-body);
-  color: var(--ink);
-}
-.receipt .tag {
-  font-family: var(--mono);
-  font-size: var(--fs-meta);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  display: block;
-  margin-bottom: 0.35rem;
-}
-
+/* status: a dot that carries real information, not a label that repeats it */
 .project .status {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
   font-family: var(--mono);
   font-size: var(--fs-meta);
   color: var(--ink-mute);
-  margin: 0 0 0.95rem;
+  margin: 0 0 1.05rem;
+}
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex: none;
+}
+.dot-ok      { background: var(--accent-bright); }
+.dot-wip     { background: var(--wip); }
+.dot-private { background: var(--off); }
+
+/* the receipt: the one bold move on the page — a hand-drawn verifying
+   tick in the corner, the way an auditor marks a figure they've checked */
+.receipt {
+  position: relative;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-left: 2px solid var(--accent);
+  padding: 0.9rem 1.15rem 0.9rem 2.5rem;
+  margin: 0 0 1.05rem;
+  font-size: 1.0625rem;
+  color: var(--ink);
+  box-shadow: 0 1px 2px rgba(22, 20, 15, 0.04);
+}
+.receipt::before {
+  content: "";
+  position: absolute;
+  left: 0.85rem;
+  top: 1.15rem;
+  width: 0.85rem;
+  height: 0.85rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234b7a46' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 13l5 6L20 5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.receipt .tag {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.4rem;
 }
 
 .project .link {
@@ -203,16 +258,14 @@ section { margin-bottom: 3.75rem; }
 
 .principle {
   border-left: 2px solid var(--rule-strong);
-  padding-left: 1.3rem;
+  padding-left: 1.35rem;
   font-family: var(--serif);
-  font-style: italic;
-  font-size: var(--fs-head);
-  line-height: 1.5;
+  font-size: 1.375rem;
+  line-height: 1.58;
   color: var(--ink-soft);
   max-width: var(--measure);
 }
 .principle strong {
-  font-style: normal;
   color: var(--ink);
   font-weight: 600;
 }
@@ -221,10 +274,10 @@ section { margin-bottom: 3.75rem; }
 
 footer {
   border-top: 1px solid var(--rule);
-  padding-top: 1.8rem;
+  padding-top: 1.9rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem 1.6rem;
+  gap: 0.5rem 1.6rem;
   font-family: var(--mono);
   font-size: var(--fs-meta);
 }
@@ -238,6 +291,7 @@ footer .status {
 
 @media (max-width: 480px) {
   .wrap { padding: 2.5rem 1.25rem 4rem; }
-  .project-head { flex-direction: column; gap: 0.15rem; }
+  .project-head { flex-direction: column; gap: 0.2rem; }
   .letterhead { flex-direction: column; align-items: flex-start; gap: 0.2rem; }
+  .receipt { padding-left: 2.25rem; }
 }

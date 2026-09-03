@@ -5,7 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Charlie Brind, AI systems built for regulated environments</title>
 <meta name="description" content="Law student building AI systems that hold up under audit. Cardiff LLB, shipping working artefacts: a citation linter, a grounded retrieval agent, a 48-table agentic OS.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='Georgia,serif' fill='%239a3e1f'%3E%C2%A7%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='Georgia,serif' fill='%232f5233'%3E%C2%A7%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Charlie Brind — AI systems built for regulated environments">
+<meta property="og:description" content="Law student building AI systems that hold up under audit. Cardiff LLB, shipping working artefacts with published receipts, not claims.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://brind0.github.io/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Newsreader:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +24,7 @@
     <span>Cardiff, UK</span>
   </div>
 
-  <header class="hero">
+  <header class="hero reveal">
     <h1>Law student.<br>AI engineer by evidence.</h1>
     <p class="lede">
       Most businesses already run on Microsoft, and most of them do not know
@@ -35,12 +43,12 @@
       <h2 class="label" id="work-label">Artefacts</h2>
     </div>
 
-    <article class="project">
+    <article class="project reveal">
       <div class="project-head">
         <span class="cite">oscola&#8288;-cite</span>
         <h3>An OSCOLA citation linter</h3>
       </div>
-      <p class="status">Status: tested, ready to use.</p>
+      <p class="status"><span class="dot dot-ok"></span>Tested, ready to use</p>
       <p class="what">
         Checks legal citation <em>form</em> against OSCOLA in an existing
         draft: fifteen rules across cases, legislation, books and journal
@@ -56,12 +64,12 @@
       <p class="link"><a href="https://github.com/Brind0/oscola-cite" data-repo="oscola-cite">github.com/Brind0/oscola-cite</a></p>
     </article>
 
-    <article class="project">
+    <article class="project reveal">
       <div class="project-head">
         <span class="cite">sg&#8288;-statutes&#8288;-agent</span>
         <h3>Grounded retrieval over Singapore statutes</h3>
       </div>
-      <p class="status">Status: in progress, one of four target Acts indexed.</p>
+      <p class="status"><span class="dot dot-wip"></span>In progress — one of four target Acts indexed</p>
       <p class="what">
         Answers questions about Singapore legislation with pinpoint citations
         (Act, section, official deep link) and refuses to answer when it
@@ -82,12 +90,12 @@
       <p class="link"><a href="https://github.com/Brind0/sg-statutes-agent" data-repo="sg-statutes-agent">github.com/Brind0/sg-statutes-agent</a></p>
     </article>
 
-    <article class="project">
+    <article class="project reveal">
       <div class="project-head">
         <span class="cite">life&#8288;-hub</span>
         <h3>A personal agentic operating system</h3>
       </div>
-      <p class="status">Status: tests passing, private, unpublished.</p>
+      <p class="status"><span class="dot dot-private"></span>Tests passing — private, unpublished</p>
       <p class="what">
         The system that actually runs my life: study, finances, health,
         career, all agent-managed. SQLite underneath, strict per-agent write
@@ -126,7 +134,7 @@
       <span class="line"></span>
       <h2 class="label" id="writing-label">Writing</h2>
     </div>
-    <article class="project">
+    <article class="project reveal">
       <div class="project-head">
         <span class="cite">amg&#8288;-build</span>
         <h3>Making a Microsoft-native agent trustworthy for a regulated document</h3>
@@ -148,5 +156,22 @@
   </footer>
 
 </div>
+<script>
+  // Progressive enhancement only: reveal-on-scroll for sections. No effect
+  // if JS fails, and no effect at all if the visitor prefers reduced motion.
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+    document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("is-visible"); });
+  }
+</script>
 </body>
 </html>
