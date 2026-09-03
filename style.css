@@ -1,7 +1,9 @@
 /* Charlie Brind — portfolio one-pager
-   Editorial / statute-citation aesthetic: paper, ink, a single warm accent.
-   Two type families only (serif for reading, mono for reference marks).
-   No framework, no external fonts, no build step. */
+   Editorial / statute-citation aesthetic: paper, ink, a single warm accent
+   (also used for every link — one accent colour only).
+   Two type families only (serif for reading, mono for reference marks),
+   both system stacks — no Google Fonts, no external requests.
+   No framework, no build step, no animation. */
 
 :root {
   --paper:        #ffffff;
@@ -11,7 +13,6 @@
   --rule:         rgba(28, 26, 21, 0.14);
   --rule-strong:  rgba(28, 26, 21, 0.30);
   --accent:       #9a3e1f;
-  --link:         #1a56db;
   --receipt-bg:   rgba(154, 62, 31, 0.07);
 
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", ui-serif, Georgia, serif;
@@ -23,7 +24,7 @@
   --fs-head:  1.75rem;    /* 28px — project titles and the pull quote */
   --fs-h1:    clamp(2.25rem, 6vw, 3.25rem);
 
-  --measure: 40rem;
+  --measure: 34rem; /* ~65-character line at the body size */
 }
 
 /* White background, dark text, always (Charlie's ruling 03/09/2026):
@@ -45,7 +46,7 @@ body {
 }
 
 a {
-  color: var(--link);
+  color: var(--accent);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
@@ -181,6 +182,13 @@ section { margin-bottom: 3.75rem; }
   color: var(--accent);
   display: block;
   margin-bottom: 0.35rem;
+}
+
+.project .status {
+  font-family: var(--mono);
+  font-size: var(--fs-meta);
+  color: var(--ink-mute);
+  margin: 0 0 0.95rem;
 }
 
 .project .link {
