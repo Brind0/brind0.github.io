@@ -4,13 +4,14 @@
    No framework, no external fonts, no build step. */
 
 :root {
-  --paper:        #f7f4ee;
-  --ink:          #1c1a15;
+  --paper:        #ffffff;
+  --ink:          #1a1a1a;
   --ink-soft:     #4a453c;
   --ink-mute:     #756e5f;
   --rule:         rgba(28, 26, 21, 0.14);
   --rule-strong:  rgba(28, 26, 21, 0.30);
   --accent:       #9a3e1f;
+  --link:         #1a56db;
   --receipt-bg:   rgba(154, 62, 31, 0.07);
 
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", ui-serif, Georgia, serif;
@@ -25,27 +26,17 @@
   --measure: 40rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper:        #15130f;
-    --ink:          #ece6d9;
-    --ink-soft:     #beb6a4;
-    --ink-mute:     #9c9482;
-    --rule:         rgba(236, 230, 217, 0.12);
-    --rule-strong:  rgba(236, 230, 217, 0.26);
-    --accent:       #d98a52;
-    --receipt-bg:   rgba(217, 138, 82, 0.08);
-  }
-}
+/* White background, dark text, always (Charlie's ruling 03/09/2026):
+   no dark-mode block. A separate design pass follows this fix. */
 
 * { box-sizing: border-box; }
 
-html { color-scheme: light dark; }
+html { color-scheme: light only; }
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
+  background: #ffffff;
+  color: #1a1a1a;
   font-family: var(--serif);
   font-size: var(--fs-body);
   line-height: 1.62;
@@ -54,7 +45,7 @@ body {
 }
 
 a {
-  color: var(--accent);
+  color: var(--link);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
@@ -93,6 +84,7 @@ h1 {
   line-height: 1.12;
   margin: 0 0 1.5rem;
   letter-spacing: -0.01em;
+  color: #1a1a1a;
 }
 
 .lede {
@@ -164,6 +156,7 @@ section { margin-bottom: 3.75rem; }
   font-size: var(--fs-head);
   margin: 0;
   letter-spacing: -0.005em;
+  color: #1a1a1a;
 }
 
 .project .what {
