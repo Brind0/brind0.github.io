@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Charlie Brind — AI systems, built for regulated environments</title>
-<meta name="description" content="Law student building AI systems that hold up under audit. Cardiff LLB, shipping working artefacts: a citation linter, a grounded retrieval agent, a 47-table agentic OS.">
+<meta name="description" content="Law student building AI systems that hold up under audit. Cardiff LLB, shipping working artefacts: a citation linter, a grounded retrieval agent, a 48-table agentic OS.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='Georgia,serif' fill='%239a3e1f'%3E%C2%A7%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -50,7 +50,7 @@
         (<em>McPhail v Doulton</em> [1971]), the kind of error every existing
         OSCOLA tool generates citations rather than checks for.
       </p>
-      <p class="link"><a href="#" data-repo="oscola-cite">github.com/Brind0/oscola-cite</a> <span class="soon">(repository link to follow)</span></p>
+      <p class="link"><a href="https://github.com/Brind0/oscola-cite" data-repo="oscola-cite">github.com/Brind0/oscola-cite</a></p>
     </article>
 
     <article class="project">
@@ -66,14 +66,16 @@
       </p>
       <p class="receipt">
         <span class="tag">The receipt</span>
-        Published eval, failures included: <strong>72% recall@1</strong>
-        against a hand-built question set, and <strong>83% refusal
+        Published eval, failures included: <strong>50% recall@1</strong>
+        against a hand-built question set, and <strong>50% refusal
         precision</strong> where a plain keyword baseline scored 33%.
+        Recall dropped as more statutes were indexed and the question set
+        hasn't caught up yet, the eval says so plainly rather than hiding it.
         Compliance with the source's terms of use (fetch windows, honest
         user agent, attribution) was designed in from the first commit, not
         bolted on after.
       </p>
-      <p class="link"><a href="#" data-repo="sg-statutes-agent">github.com/Brind0/sg-statutes-agent</a> <span class="soon">(repository link to follow)</span></p>
+      <p class="link"><a href="https://github.com/Brind0/sg-statutes-agent" data-repo="sg-statutes-agent">github.com/Brind0/sg-statutes-agent</a></p>
     </article>
 
     <article class="project">
@@ -89,9 +91,9 @@
       </p>
       <p class="receipt">
         <span class="tag">The receipt</span>
-        47+ tables, 23 registered job types, roughly 30 million tokens of
-        agent runs to date. Every write is deterministic and attributable;
-        nothing autonomous touches a financial account.
+        48 tables, 800+ automated runs, 339 tests. Every write is
+        deterministic and attributable; nothing autonomous touches a
+        financial account.
       </p>
       <p class="link"><a href="#" data-repo="life-hub">github.com/Brind0</a> <span class="soon">(public write-up to follow)</span></p>
     </article>
@@ -111,11 +113,31 @@
     </p>
   </section>
 
+  <section aria-labelledby="writing-label">
+    <div class="section-mark">
+      <span class="num">&sect; 03</span>
+      <span class="line"></span>
+      <h2 class="label" id="writing-label">Writing</h2>
+    </div>
+    <article class="project">
+      <div class="project-head">
+        <span class="cite">amg&#8288;-build</span>
+        <h3>Making a Microsoft-native agent trustworthy for a regulated document</h3>
+      </div>
+      <p class="what">
+        A day spent building and testing an agent pipeline for a
+        wealth-management annual review, entirely in-tenant on synthetic
+        clients, and an honest account of the eval that followed, including
+        the case a clean human approval didn't catch.
+      </p>
+      <p class="link"><span class="soon">(to follow, pending publication)</span></p>
+    </article>
+  </section>
+
   <footer>
-    <a href="#" data-field="linkedin">linkedin.com/in/&#8288;[to&#8288;-fill]</a>
+    <a href="#" data-field="linkedin">[Charlie sets]</a>
     <a href="https://github.com/Brind0">github.com/Brind0</a>
-    <a href="mailto:[to-fill@example.com]">[email, to fill]</a>
-    <span class="status">Draft, built 12/08/2026, not yet published.</span>
+    <span data-field="email">[Charlie sets]</span>
   </footer>
 
 </div>
